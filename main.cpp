@@ -16,15 +16,13 @@ video: Chapter 2 - Part 3
  
  1) Write down the names of all of the primitives available in C++ (excluding wchar_t)
  put them here: 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+ bool
+ char
+ int
+ unsigned int
+ float
+ double
+  
  
  
 2) for each primitive type, write out 3 variable declarations inside the variableDeclaration function.
