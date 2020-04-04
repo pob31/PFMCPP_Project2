@@ -16,15 +16,13 @@ video: Chapter 2 - Part 3
  
  1) Write down the names of all of the primitives available in C++ (excluding wchar_t)
  put them here: 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+ bool (1 bit but uses 1 byte)
+ char (1 byte)
+ int (2 bytes)
+ unsigned int 5 (2 bytes)
+ float (32bit 4 bytes)
+ double (64bit float; 8 bytes or more)
+  
  
  
 2) for each primitive type, write out 3 variable declarations inside the variableDeclaration function.
@@ -65,10 +63,32 @@ void variableDeclarations()
 {
     //example:
     int number = 2; //declaration of a primitive named 'number' with an initial value of '2'
+    int filterType      = 4;
+    int numberOfInputs  = 5;
+    int year            = 2020;
+
+    float bodyTemperature   = 37.2f;
+    float signalVector      = -0.123f;
+    float filterFrequency   = 1250.0f;
+
+    char keyPressed{'c'};
+    char nextLetterInString{'g'};
+    char stringSeparator{' '};
+
+    bool hasBeenInitialised = false;
+    bool tallerThanAverage  = 0;
+    bool hasSoundcard       = true;
+
+    unsigned int absoluteValue  = 3;
+    unsigned int inhabitants    = 34232;
+    unsigned int randomSeed     = 769;
+
+    double timeStamp                    = 123456789.23456;
+    double numberOfStarsInGalaxy        = 2.5e11 ;
+    double highPrecisionSignalVector    = 0.000234235340234;
     
+    ignoreUnused(number, filterType, numberOfInputs, year, bodyTemperature, signalVector, filterFrequency, keyPressed, nextLetterInString, stringSeparator, hasBeenInitialised, tallerThanAverage, hasSoundcard, absoluteValue, inhabitants, randomSeed, timeStamp, numberOfStarsInGalaxy, highPrecisionSignalVector); //passing each variable declared to the ignoreUnused() function
     
-    
-    ignoreUnused(number); //passing each variable declared to the ignoreUnused() function
 }
 /*
  10 functions
@@ -81,72 +101,136 @@ bool rentACar(int rentalDuration, int carType = 0)  //function declaration with 
 } 
 
 /*
- 1)
+ 1) calculates distance
  */
-
+float distance3Dsquared(float x1, float x2, float y1 = 0.0f, float y2 = 0.0f, float z1 = 0.0f, float z2 =0.0f)
+{
+    float distance = ((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1) + (z2-z1)*(z2-z1)); // missing sqrt() function for normal distance calculation
+    return distance;
+}
 /*
- 2)
- */
 
-/*
- 3)
+ 2) calculate one of the biquad coefficients
  */
-
+void biquadCoefA1 (float filterFreq = 1000.0f, float filterQ = 0.7f, float filterGain=0.0f, int filterType=1)
+{
+    float A1 = 0;
+    std::cout << "filter frequency: " << filterFreq  << "Hz" << std::endl;
+    std::cout << "filter Q: "         << filterQ     << std::endl;
+    std::cout << "filter gain: "      << filterGain  << "dB" << std::endl;
+    std::cout << "filter type: "      << filterType  << std::endl;
+    // calculates the A1 biquad coefficient depending on filter type and parameters
+    std::cout << "A1=" << A1 << std::endl;
+    return;
+}
 /*
- 4)
+ 3) apply gain value
  */
-
+float applyGain (float signal, float gainDB = 0.0f)
+{
+    float gain = 1; // missing exp() for proper calculation from the gain value in dB and signal in the range of [-1.,1.]
+    ignoreUnused(gainDB);
+    return (signal * gain);
+}
 /*
- 5)
+ 4) apply colour to text
  */
-
+void applyColour2Text (int selectedColourIndex)
+{
+    ignoreUnused(selectedColourIndex);
+    return;
+}
 /*
- 6)
+ 5) Never agrees
  */
-
+bool neverAgree(bool Isay)
+{
+    return !Isay;
+}
 /*
- 7)
+ 6) plays drone
  */
-
+void playDrone(float droneFreq, float droneDuration = 1000.0f)
+{
+  // play drone at 'freq' and for 'duration' in ms
+    ignoreUnused(droneFreq, droneDuration);
+    return;
+}
 /*
- 8)
+ 7) type a letter
  */
-
+void typeLetter (char typedLetter)
+{
+    std::cout << typedLetter << std::endl;
+    return;
+}
 /*
- 9)
+ 8) high precision speed calculation
  */
-
+double highPrecisionSpeed (double distance, double time = 1.0)
+{
+    return distance / time ;
+}
 /*
- 10)
+ 9) comparison
  */
+bool isLargerThan (int x, int y)
+{
+    return(x > y);
+}
+/*
+ 10) the last one
+ */
+int theLastOne()
+{
+    return 10;
+}
 
 int main()
 {
     //example of calling that function, storing the value, and passing it to ignoreUnused at the end of main()
     auto carRented = rentACar(6, 2); 
+
+    std::cout << "Sorry I added a bit of code from stuff I remembered. Tried to push things a bit further than what you asked. Must have something to do with confinement boredom... :)" << std::endl;
     
     //1)
-    
+    float x_1 = 20.0f;
+    float y_1 = 5.0f;
+    float x_2 = 40.0f;
+    float y_2 = -6.0f;
+    std::cout << std::endl << "1: squared distance from (" << x_1 << "," << y_1 << ") to (" << x_2 << "," << y_2 << ") = ";
+    std::cout << distance3Dsquared(x_1, x_2, y_1, y_2) << std::endl;
+
     //2)
-    
+    std::cout << std::endl << "2: " << std::endl;
+    biquadCoefA1(250.0f, 2.3f, -3.3f, 3);
+
     //3)
-    
+    applyGain(0.23f, -4.2f);
+
     //4)
-    
+    applyColour2Text(4);
+
     //5)
-    
+    std::cout << std::endl << "5: I say true but you never agree: " << neverAgree( true ) << std::endl;
+
     //6)
-    
+    playDrone(50.0f, 4000.0f);
+
     //7)
-    
+    char pressedKey{'f'};
+    typeLetter(pressedKey);
+
     //8)
-    
+    std::cout << std::endl << "8: high precision speed calculations: " << highPrecisionSpeed (12454563241244325.72353564, 0.2345) << std::endl;
+
     //9)
+    std::cout << std::endl << "9: is 5 larger than 8? " << isLargerThan(5, 8) << std::endl;
     
     //10)
-    
+    std::cout << std::endl << "10: What function is this ? " << std::endl << "It's function #" << theLastOne() << std::endl ;
     
     ignoreUnused(carRented);
-    std::cout << "good to go!" << std::endl;
+    std::cout << "good to go!" << std::endl << std::endl;
     return 0;    
 }
