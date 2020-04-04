@@ -16,12 +16,12 @@ video: Chapter 2 - Part 3
  
  1) Write down the names of all of the primitives available in C++ (excluding wchar_t)
  put them here: 
- bool
- char
- int
- unsigned int
- float
- double
+ bool (1 bit but uses 1 byte)
+ char (1 byte)
+ int (2 bytes)
+ unsigned int 5 (2 bytes)
+ float (32bit 4 bytes)
+ double (64bit float; 8 bytes or more)
   
  
  
@@ -63,10 +63,18 @@ void variableDeclarations()
 {
     //example:
     int number = 2; //declaration of a primitive named 'number' with an initial value of '2'
-    
-    
+    float floatNumber = 3.4f;
+    char charVariable{'c'};
+    bool boolValue = true;
+    unsigned int absoluteValue = 3;
+    double bigFloat = -123456789.23456;
     
     ignoreUnused(number); //passing each variable declared to the ignoreUnused() function
+    ignoreUnused(floatNumber);
+    ignoreUnused(charVariable);
+    ignoreUnused(boolValue);
+    ignoreUnused(absoluteValue);
+    ignoreUnused(bigFloat);
 }
 /*
  10 functions
