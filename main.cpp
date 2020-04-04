@@ -218,10 +218,8 @@ int main()
     playDrone(50.0f, 4000.0f);
 
     //7)
-    std::cout << std::endl << "7 : Please type a letter and press return afterwards: ";
-    char pressKey;
-    std::cin >> pressKey;
-    typeLetter(pressKey);
+    char pressedKey{'f'};
+    typeLetter(pressedKey);
 
     //8)
     std::cout << std::endl << "8: high precision speed calculations: " << highPrecisionSpeed (12454563241244325.72353564, 0.2345) << std::endl;
